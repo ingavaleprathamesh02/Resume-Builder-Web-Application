@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="index3_style.css">
+    <!--<link rel="stylesheet" href="/bootstrap-5.2.3/css/bootstrap.css">-->
+    
+    
+    <title>Online Resume Generator</title>
+</head>
+<body>
+    <div class="container" id="resume-form">
+        <h2 class="text-center my-3" >Fill The Details</h2>
+        
+            <div class="form-group row">
+                <h3 class="my-4">Personal Information</h3>
+                <label for="name" class="col-sm-2 col-form-label mt-2">Your Full Name</label>
+                <div class="col-sm-10">
+                    <input type="text" id="nameField" class="form-control" placeholder="Enter here">
+                </div>
+            </div>
+                
+            <div class="form-group row">
+                <label for="contactField" class="col-sm-2 col-form-label mt-2">Mobile Number</label>
+                <div class="col-sm-10">
+                    <input type="number" id="contactField" class="form-control" placeholder="Enter here">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="addressField" class="col-sm-2 col-form-label">Your Address</label>
+                <div class="col-sm-10">
+                    <textarea id="addressField" class="form-control" placeholder="Enter here" rows="4"></textarea>
+                </div>    
+            </div>
+            <div class="form-group row mt-2">
+                <p class="col-sm-2 col-form-label">Important Links</p>
+                <div class="col-sm-3">
+                    <input type="email" id="mailField" class="form-control" placeholder="E-mail">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="gitField" class="form-control" placeholder="Github">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" id="linkedField" class="form-control" placeholder="LinkedIn">
+                </div>
+            </div>
+           
+            <div class="form-group row">
+
+                <h3 class="my-4">Professional Information</h3>
+                <div class="form-group row mt-2">
+                    <label for="" class="col-sm-2 col-form-label">Career Objective</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" placeholder="Enter here" rows="2" id="C_obj"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row mt-2" id="WE">
+                    <label for="" class="col-sm-2 col-form-label">Achievements</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control weField" placeholder="Enter here" rows="2"></textarea>
+                    </div>
+                    <!--New text area will add dynamically when button is clicked-->
+                    <div class="container text-center mt-3" id="weAddButton">
+                        <button onclick="addWE_Field()" class="btn btn-outline-primary btn-sm">+</button>
+                    </div>
+                </div>
+                <div class="form-group row mt-2" id="intern">
+                    <label for="" class="col-sm-2 col-form-label">Internships</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control i-Field" placeholder="Enter here" rows="2"></textarea>
+                    </div>
+                    <!--New text area will add dynamically when button is clicked-->
+                    <div class="container text-center mt-3" id="iAddButton">
+                        <button onclick="addI_Field()" class="btn btn-outline-primary btn-sm">+</button>
+                    </div>
+                </div>
+                <div class="form-group row mt-2" id="sk">
+                    <label for="" class="col-sm-2 col-form-label">Skills</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control s-Field" placeholder="Enter here" rows="2"></textarea>
+                    </div>
+                    <!--New text area will add dynamically when button is clicked-->
+                    <div class="container text-center mt-3" id="sAddButton">
+                        <button onclick="addS_Field()" class="btn btn-outline-primary btn-sm">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row" id="AQ">
+                <h3 class="my-4">Academic Qualification</h3>
+                <div class="col-sm-12">
+                    <textarea class="form-control aqField" rows="2" placeholder="eg.Graduation,HSC,SSC"></textarea>
+                </div>
+                <!--New text area will add dynamically when button is clicked-->
+                <div class="container text-center mt-3" id="aqAddButton">
+                    <button onclick="addAQ_Field()" class="btn btn-outline-primary btn-sm">+</button>
+                </div>
+            </div>
+            <div class="form-group row mt-2">
+                <label for="name" class="col-sm-2 col-form-label mt-2">Upload Photo</label>
+                <div class="col-sm-4">
+                    <input id="imgField" type="file" class="form-control">
+                </div>
+                
+            </div>
+        </div>
+        <div class="container text-center mt-3">
+            <button onclick="generate()" class="btn btn-outline-primary btn-lg">Generate Resume</button>
+        </div>
+        <br>
+    </div>
+    <!--RESUME Template-->
+    <div class="container" id="re-template">
+        <div class="row">
+            <div class="col-md-4 text-center bg_color color">
+                <!--First column-->
+                <img src="/Resume Builder/img/image.jpg" alt="" class="img-fluid myimg" id="imgT">
+                <div class="container mt-2 color">
+                    <p id="nameT">Prathamesh Digambar Ingavale</p>
+                    <p id="contactT">9359868880 02312627165</p>
+                    <p id="addT">Shivaji Peth kolhapur</p>
+                    <hr>
+                    <p id="mailT">Email</p>
+                    <p id="githubT">Github</p>
+                    <p id="linkedT">LinkedIn</p>
+                    <hr>
+                    <h3>Skills</h3>
+                    <ul style="text-align: left;" id="ST" >
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <!--Second column-->
+                <!--Objective card-->
+                <div class="mt-3">
+                    <div class="card-header">
+                        <h4>Objective</h4>
+                    </div>
+                    <div class="card-body">
+                        <p id="objT">
+                            
+                        </p>
+                    </div>
+                </div>
+                <!--Work exp card-->
+                <div class="mt-2">
+                    <div class="card-header">
+                        <h4>Achievements</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="weT">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!--Academic card-->
+                <div class="mt-2">
+                    <div class="card-header">
+                        <h4>Academic Qualification</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="aqT">
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <div class="card-header">
+                        <h4>Internships</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="InternT">
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3 text-center">
+        <button onclick="download()" class="btn btn-outline-primary">Download Resume</button>
+    </div>
+    <br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
